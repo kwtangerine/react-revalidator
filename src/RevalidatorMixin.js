@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react');
 var ObjectPath = require('object-path');
 var Revalidator = require('revalidator');
@@ -190,14 +188,14 @@ var RevalidatorMixin = {
     }
     return revalidator.isDirty;
   },
-  getFieldClass: function (field, successClass, errorClass, defaultClass) {
+  getFieldClass: function (property, successClass, errorClass, defaultClass) {
     successClass = successClass || 'has-success';
     errorClass = errorClass || 'has-error';
     defaultClass = defaultClass || 'form-group';
     var classNames = {};
     classNames[defaultClass] = true;
-    classNames[successClass] = this.isValid(field) && this.isDirty(field);
-    classNames[errorClass] = !this.isValid(field) && this.isDirty(field);
+    classNames[successClass] = this.isValid(property) && this.isDirty(property);
+    classNames[errorClass] = !this.isValid(property) && this.isDirty(property);
     return ClassNames(classNames);
   },
   renderFieldMessages: function (property, className) {

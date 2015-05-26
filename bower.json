@@ -1,12 +1,16 @@
 {
-  "name": "react-component-starter",
-  "version": "0.0.1",
-  "description": "React component.",
-  "main": "lib/Component.js",
+  "name": "react-revalidator",
+  "version": "0.1.0",
+  "description": "React mixin for form validation base on revalidator.",
+  "main": "lib/RevalidatorMixin.js",
   "keywords": [
     "react-component",
     "react",
-    "component"
+    "component",
+    "react-validator",
+    "react-revalidator",
+    "react-form",
+    "react-validation"
   ],
   "license": "MIT",
   "ignore": [

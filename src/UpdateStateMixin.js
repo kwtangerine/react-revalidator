@@ -1,5 +1,3 @@
-'use strict';
-
 var ObjectPath = require('object-path');
 
 var UpdateStateMixin = {
@@ -8,7 +6,9 @@ var UpdateStateMixin = {
     callback = callback || function () {};
     var stateModel = ObjectPath(state);
     for (var property in newState) {
-      stateModel.set(property, newState[property]);
+      if (newState.hasOwnProperty(property)) {
+        stateModel.set(property, newState[property]);
+      }
     }
     this.setState(state, callback);
   }
