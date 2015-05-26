@@ -6,8 +6,8 @@ require('./assets/styles/app.scss');
 var Header = require('./components/Header');
 var Footer = require('./components/Footer');
 
-var RevalidatorMixin = require('../src/RevalidatorMixin');
-var UpdateStateMixin = require('../src/UpdateStateMixin');
+var RevalidatorMixin = require('../lib/RevalidatorMixin');
+var UpdateStateMixin = require('../lib/UpdateStateMixin');
 
 var App = React.createClass({
   mixins: [RevalidatorMixin, UpdateStateMixin],
