@@ -168,7 +168,7 @@ var RevalidatorMixin = {
     var revalidator = this.state.Revalidator;
     var revalidatorModel = ObjectPath(revalidator);
     if (property) {
-      return revalidatorModel.get(property + '.errors', []);
+      return this.isDirty(property) ? revalidatorModel.get(property + '.errors', []) : [];
     }
     return revalidator.errors;
   },
