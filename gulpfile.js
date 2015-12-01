@@ -3,7 +3,7 @@
 var gulp = require('gulp');
 var gulpUtil = require('gulp-util');
 var del = require('del');
-var webpack = require('gulp-webpack');
+var webpack = require('webpack-stream');
 var named = require('vinyl-named');
 var minifyHtml = require('gulp-minify-html');
 var uglify = require('gulp-uglify');
@@ -14,7 +14,7 @@ var browserSync = require('browser-sync');
 var modRewrite = require('connect-modrewrite');
 var runSequence = require('run-sequence');
 var opn = require('opn');
-var karma = require('gulp-karma');
+var Server = require('karma').Server;
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 
@@ -139,12 +139,11 @@ gulp.task('serve', function (callback) {
   runSequence('clean', 'webpack', 'browserSync', 'webpack:watch', callback);
 });
 
-gulp.task('test', function () {
-  return gulp.src('test/spec/**/*.js')
-    .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: 'run'
-    }));
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('build', function (callback) {
